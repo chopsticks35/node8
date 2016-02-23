@@ -1,9 +1,14 @@
 // Requires \\
 var express = require('express');
 var bodyParser = require('body-parser');
+//require mongoose\\
+var mongoose = require('mongoose');
 
 // Create Express App Object \\
 var app = express();
+
+// Connect monggoDB \\
+mongoose.connect('mongodb://localhost/omega3Studio');
 
 // Application Configuration \\
 app.use(bodyParser.json());
@@ -18,14 +23,17 @@ app.get('/', function(req, res) {
 
 // displays a list of applicants
 app.get('/applicants', function(req, res){
+    
 	res.sendFile('html/applicants.html', {root : './public'});
 });
 
 // creates and applicant
 app.post('/applicant', function(req, res){
 	// Here is where you need to get the data
+   
+    console.log(req.body);
 	// from the post body and store it in the database
-	res.send('No funciona');
+	res.send('Success!');
 });
 
 
