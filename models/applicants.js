@@ -1,11 +1,11 @@
 var mongoose = requite('mongoose')
 
 var applicantSchema = mongoose.Schema({
-    name        : String,
-    bio         : String,
-    skills      : String,
-    yearsExp    : Number,
-    reason      :   String,
+    name    : String,
+    bio     : String,
+    skills  : String,
+    years   : Number,
+    why     :   String,
     
 
 })

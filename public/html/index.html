@@ -11,21 +11,21 @@
     <div class="container">
       <h1>Omega 3 Studios</h1>
       <h2>Application for Senior Web Developer</h2>
-      <form id="application-form" action="/applicant" method="post">
+      <form ng-submit="createApplicant()" id="application-form" action="/applicant" method="post">
         <div class="form-group">
-          <input name="name" type="text" placeholder="Name" class="form-control"/>
+          <input ng-model="newApplicant.name" name="name" type="text" placeholder="Name" class="form-control"/>
         </div>
         <div class="form-group">
-          <textarea name="bio" rows="5" placeholder="Bio" class="form-control"></textarea>
+          <textarea ng-model="newApplicant.bio" name="bio" rows="5" placeholder="Bio" class="form-control"></textarea>
         </div>
         <div class="form-group">
-          <textarea name="skills" rows="3" placeholder="Skills (separated by commas)" class="form-control"></textarea>
+          <textarea ng-model="newApplicant.skills" name="skills" rows="3" placeholder="Skills (separated by commas)" class="form-control"></textarea>
         </div>
         <div class="form-group">
-          <input name="years" type="number" placeholder="Years of experience" class="form-control"/>
+          <input ng-model="newApplicant.years" name="years" type="number" placeholder="Years of experience" class="form-control"/>
         </div>
         <div class="form-group">
-          <textarea name="why" rows="5" placeholder="Why do you want to work here?" class="form-control"></textarea>
+          <textarea ng-model="newApplicant.why" name="why" rows="5" placeholder="Why do you want to work here?" class="form-control"></textarea>
         </div>
         <div class="form-group">
           <input type="submit" class="btn btn-default"/>
@@ -33,7 +33,11 @@
       </form>
     </div>
 	  
-	  
+<!--
+	  <ul>
+        <li ng-repeat="applicant in applicants">{{applicant.name}}</li>
+      </ul>
+-->
 	  
 	  
 	<script src="/javascripts/main.js"></script>
