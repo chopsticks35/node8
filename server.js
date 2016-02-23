@@ -1,6 +1,7 @@
 // Requires \\
 var express = require('express');
 var bodyParser = require('body-parser');
+var logger = require('morgan');
 //require mongoose\\
 var mongoose = require('mongoose');
 
@@ -11,6 +12,7 @@ var app = express();
 mongoose.connect('mongodb://localhost/omega3Studio');
 
 // Application Configuration \\
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
@@ -23,18 +25,28 @@ app.get('/', function(req, res) {
 
 // displays a list of applicants
 app.get('/applicants', function(req, res){
-    
 	res.sendFile('html/applicants.html', {root : './public'});
 });
 
-// creates and applicant
-app.post('/applicant', function(req, res){
-	// Here is where you need to get the data
-   
-    console.log(req.body);
-	// from the post body and store it in the database
-	res.send('Success!');
-});
+// require controller - put functions in one controller for applicants
+
+var applicantsCtrl = require('./controllers/applicantsCtrl.js')
+
+// creates an applicant - calls ng-submit function
+
+app.post('/applicant', applicantsCtrl.createApplicant)
+
+app.get('/applicants', applicantsCtrl.getApplicants)
+
+//app.post('/applicant', function(req, res){
+//	// Here is where you need to get the data
+//   
+//    console.log(req.body);
+//	// from the post body and store it in the database
+////	res.send('Success!');
+//    //redirect  after submitted \\
+//    res.redirect('Success!');
+//});
 
 
 
