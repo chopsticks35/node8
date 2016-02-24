@@ -15,7 +15,7 @@ function createApplicant (req, res){
 //        res.send('Successfully added: ' + savedApplicant)
 ////        s
         //    //redirect  after submitted \\
-    res.redirect('/');
+    res.redirect('/html/success.html');
     })
 }
 
